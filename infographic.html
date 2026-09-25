@@ -333,6 +333,91 @@
   font-size: 18px;
   letter-spacing: 2px;
 }
+    /* ---------- KNOWLEDGE TODAY ---------- */
+
+.then-now {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin: 28px 0;
+}
+
+.comparison-card {
+  flex: 1;
+  padding: 20px;
+  background-color: #fdf0ec;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.comparison-icon {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.comparison-card small {
+  display: block;
+  color: #c96f86;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.comparison-card strong {
+  display: block;
+  font-family: Georgia, serif;
+  color: #87515d;
+  font-size: 17px;
+}
+
+.comparison-card p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+.today-card {
+  background-color: #f8dfe4;
+}
+
+.comparison-arrow {
+  align-self: center;
+  color: #d98298;
+  font-size: 26px;
+}
+
+.suleyman-box {
+  margin-top: 28px;
+  padding: 25px;
+  background-color: #4b3034;
+  color: #fffaf7;
+  border-radius: 20px;
+}
+
+.suleyman-label {
+  color: #efb8c5;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.suleyman-box h3 {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0 0 15px;
+  color: #f8dfe4;
+}
+
+.suleyman-box p {
+  font-size: 14px;
+  color: #fffaf7;
+}
+
+.suleyman-box p:last-child {
+  margin-bottom: 0;
+}
     
 
     /* ---------- FOOTER ---------- */
@@ -348,6 +433,14 @@
     /* ---------- MOBILE ---------- */
 
     @media (max-width: 700px) {
+
+      .then-now {
+  flex-direction: column;
+}
+
+.comparison-arrow {
+  transform: rotate(90deg);
+}
 
       .spread-visual {
   flex-direction: column;
@@ -790,6 +883,122 @@
         see value in it, they can copy it, adapt it, and bring it into
         new communities. Its impact grows far beyond where it started.
       </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+  <!-- KNOWLEDGE TODAY -->
+
+<section class="timeline-section">
+
+  <div class="timeline-image">
+    <img
+      src="digital-knowledge-ai.png"
+      alt="Illustration of modern digital access to knowledge through computers, tablets, books and artificial intelligence">
+  </div>
+
+  <div class="timeline-content">
+
+    <div class="stage-number">
+      05
+    </div>
+
+    <div class="small-title">
+      Knowledge Today
+    </div>
+
+    <h2>
+      A library can now fit in my backpack.
+    </h2>
+
+    <p>
+      Today, my relationship with knowledge looks completely different.
+      With an iPad, computer, Kindle, and access to the Internet, I can
+      move between textbooks, articles, notes, videos, and other sources
+      of information in seconds.
+    </p>
+
+    <p>
+      The contrast is difficult to imagine: a handwritten book once
+      represented months of wages, while today a single digital device
+      can provide access to more information than one person could
+      realistically read in a lifetime.
+    </p>
+
+    <div class="then-now">
+
+      <div class="comparison-card">
+        <span class="comparison-icon">📜</span>
+        <small>THEN</small>
+        <strong>Knowledge was scarce.</strong>
+        <p>
+          Books were expensive, slow to reproduce, and difficult
+          for many people to access.
+        </p>
+      </div>
+
+      <div class="comparison-arrow">
+        →
+      </div>
+
+      <div class="comparison-card today-card">
+        <span class="comparison-icon">📱</span>
+        <small>NOW</small>
+        <strong>Knowledge is everywhere.</strong>
+        <p>
+          Information can travel across the world and reach
+          millions of people almost instantly.
+        </p>
+      </div>
+
+    </div>
+
+    <details class="learn-more">
+
+      <summary>
+        But does more access mean fewer problems? ↓
+      </summary>
+
+      <p>
+        Not necessarily. The printing press made knowledge easier to
+        reproduce, but it also helped inflammatory arguments and
+        propaganda circulate. The Internet creates a similar dilemma:
+        the same systems that give us extraordinary access to knowledge
+        can also spread misleading or harmful information.
+      </p>
+
+    </details>
+
+    <div class="suleyman-box">
+
+      <div class="suleyman-label">
+        CONNECTION TO SULEYMAN
+      </div>
+
+      <h3>
+        We create technology, but we cannot completely control
+        what it becomes.
+      </h3>
+
+      <p>
+        Suleyman describes a recurring challenge of technology:
+        once technologies spread, more people can use them, adapt them,
+        and shape them in ways their creators may never have intended.
+        The printing press is a powerful historical example of this.
+        Gutenberg wanted to print books and build a successful business,
+        but printing eventually became part of transformations in
+        religion, science, politics, and society.
+      </p>
+
+      <p>
+        Artificial intelligence makes me wonder about the same problem.
+        We know how we use AI today, but can we really predict what
+        people will use it for decades from now?
+      </p>
+
     </div>
 
   </div>

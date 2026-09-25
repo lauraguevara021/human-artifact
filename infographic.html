@@ -190,6 +190,60 @@
   background-color: #fff7f4;
   border-radius: 15px;
 }
+
+    /* ---------- PRINTING PRESS ---------- */
+
+.timeline-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.cost-story {
+  margin: 28px 0;
+  padding: 25px;
+  background-color: #fdf0ec;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.cost-step {
+  padding: 8px;
+}
+
+.cost-step span {
+  display: block;
+  font-size: 13px;
+  color: #87515d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cost-step strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  color: #c96f86;
+  margin: 3px 0;
+}
+
+.cost-step small {
+  color: #87515d;
+}
+
+.cost-arrow {
+  font-size: 25px;
+  color: #d98298;
+  margin: 3px 0;
+}
+
+.final-cost {
+  background-color: #f8dfe4;
+  border-radius: 15px;
+  padding: 14px;
+}
+
+.final-cost strong {
+  font-size: 38px;
+}
     
 
     /* ---------- FOOTER ---------- */
@@ -225,6 +279,9 @@
       }
       .timeline-section {
   flex-direction: column;
+        .timeline-section.reverse {
+  flex-direction: column;
+}
   margin-left: 20px;
   margin-right: 20px;
   padding: 28px;
@@ -357,6 +414,86 @@
         unrealistic for many ordinary people. Access was much more
         closely connected to wealth, institutions, and social status
         than it is for many people today.
+      </p>
+
+    </details>
+
+  </div>
+
+</section>
+
+<!-- THE PRINTING PRESS -->
+
+<section class="timeline-section reverse">
+
+  <div class="timeline-image">
+    <img
+      src="printing-press.png"
+      alt="Illustration of an early printing press">
+  </div>
+
+  <div class="timeline-content">
+
+    <div class="stage-number">
+      02
+    </div>
+
+    <div class="small-title">
+      The Printing Revolution
+    </div>
+
+    <h2>
+      Knowledge becomes reproducible.
+    </h2>
+
+    <p>
+      In the fifteenth century, Gutenberg developed a printing system
+      that combined durable metal type, oil-based ink, and a press.
+      Instead of copying every book by hand, printers could rearrange
+      the type and produce hundreds of copies.
+    </p>
+
+    <div class="cost-story">
+
+      <div class="cost-step">
+        <span>Before Gutenberg</span>
+        <strong>~6 months</strong>
+        <small>of wages</small>
+      </div>
+
+      <div class="cost-arrow">
+        ↓
+      </div>
+
+      <div class="cost-step">
+        <span>After printing spread</span>
+        <strong>~6 days</strong>
+        <small>of wages</small>
+      </div>
+
+      <div class="cost-arrow">
+        ↓
+      </div>
+
+      <div class="cost-step final-cost">
+        <span>By the early 1600s</span>
+        <strong>~6 hours</strong>
+        <small>of wages</small>
+      </div>
+
+    </div>
+
+    <details class="learn-more">
+
+      <summary>
+        What was actually revolutionary? ↓
+      </summary>
+
+      <p>
+        Gutenberg's Bibles were impressive, but the biggest change
+        was economic. As writing became much cheaper to reproduce,
+        books and ideas could reach far more people than handwritten
+        manuscripts could.
       </p>
 
     </details>

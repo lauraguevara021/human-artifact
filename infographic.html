@@ -99,6 +99,99 @@
       font-size: 16px;
     }
 
+/* ---------- INFOGRAPHIC TIMELINE ---------- */
+
+.timeline-section {
+  max-width: 1050px;
+  margin: 40px auto 90px;
+  padding: 45px;
+  display: flex;
+  align-items: center;
+  gap: 55px;
+  background-color: #fffdfb;
+  border: 1px solid #efd1d6;
+  border-radius: 30px;
+  box-shadow: 0 12px 30px rgba(100, 70, 70, 0.08);
+}
+
+.timeline-image {
+  flex: 1;
+}
+
+.timeline-image img {
+  width: 100%;
+  display: block;
+  border-radius: 22px;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.stage-number {
+  font-family: Georgia, serif;
+  font-size: 55px;
+  color: #efd1d6;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.timeline-content h2 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  color: #87515d;
+  margin: 8px 0 18px;
+}
+
+.timeline-content p {
+  font-size: 16px;
+}
+
+.fact-box {
+  margin: 28px 0;
+  padding: 25px;
+  text-align: center;
+  background-color: #fdf0ec;
+  border-radius: 20px;
+}
+
+.fact-label {
+  font-size: 14px;
+  color: #87515d;
+}
+
+.big-number {
+  font-family: Georgia, serif;
+  font-size: 42px;
+  font-weight: bold;
+  color: #c96f86;
+  margin: 5px 0;
+}
+
+.learn-more {
+  margin-top: 20px;
+  border-top: 1px solid #efd1d6;
+  padding-top: 18px;
+}
+
+.learn-more summary {
+  color: #c96f86;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.learn-more summary:hover {
+  color: #87515d;
+}
+
+.learn-more p {
+  margin-top: 15px;
+  padding: 18px;
+  background-color: #fff7f4;
+  border-radius: 15px;
+}
+    
+
     /* ---------- FOOTER ---------- */
 
     footer {
@@ -130,6 +223,20 @@
         margin-left: 20px;
         margin-right: 20px;
       }
+      .timeline-section {
+  flex-direction: column;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 28px;
+}
+
+.timeline-content h2 {
+  font-size: 29px;
+}
+
+.big-number {
+  font-size: 36px;
+}
 
     }
 
@@ -197,7 +304,66 @@
   </section>
 
 
-  <!-- INFOGRAPHIC WILL CONTINUE HERE -->
+ <!-- BEFORE THE PRINTING PRESS -->
+
+<section class="timeline-section">
+
+  <div class="timeline-image">
+    <img
+      src="manuscript.png"
+      alt="Illustration of a handwritten manuscript before the printing press">
+  </div>
+
+  <div class="timeline-content">
+
+    <div class="stage-number">
+      01
+    </div>
+
+    <div class="small-title">
+      Before the Printing Press
+    </div>
+
+    <h2>
+      Knowledge was expensive.
+    </h2>
+
+    <p>
+      Before Gutenberg's printing system transformed book production
+      in Europe, books had to be copied by hand. Producing a manuscript
+      required enormous amounts of time and skilled labor.
+    </p>
+
+    <div class="fact-box">
+      <span class="fact-label">A handwritten book cost around</span>
+
+      <div class="big-number">
+        6 MONTHS
+      </div>
+
+      <span class="fact-label">
+        of wages
+      </span>
+    </div>
+
+    <details class="learn-more">
+
+      <summary>
+        Why did this matter? ↓
+      </summary>
+
+      <p>
+        When books were this expensive, owning written knowledge was
+        unrealistic for many ordinary people. Access was much more
+        closely connected to wealth, institutions, and social status
+        than it is for many people today.
+      </p>
+
+    </details>
+
+  </div>
+
+</section>
 
 
   <!-- FOOTER -->

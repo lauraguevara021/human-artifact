@@ -1,20 +1,484 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Behind the Chatbox</title><style>
-:root{--bg:#fffaf7;--ink:#4b3434;--pink:#c96f86;--soft:#f8dfe4;--line:#efd1d6;--dark:#87515d}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 system-ui,sans-serif}nav{background:var(--soft);padding:16px 6%;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line)}a{color:var(--dark)}nav a{text-decoration:none;font-size:14px}main{max-width:1000px;margin:auto;padding:0 24px}header{padding:85px 0 50px;text-align:center}h1,h2,h3{font-family:Georgia,serif;line-height:1.15}h1{font-size:clamp(44px,8vw,85px);margin:15px 0}h2{font-size:clamp(30px,5vw,44px);margin:10px 0 20px}h3{font-size:23px}.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--dark);font-weight:bold}.lead{font-size:21px;max-width:680px;margin:20px auto}section{padding:50px 0;border-top:1px solid var(--line);scroll-margin-top:20px}.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:25px;margin:20px 0}.soft{background:#fdf0ec}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}button,.button{display:inline-block;background:var(--dark);color:white;border:0;border-radius:24px;padding:12px 20px;font:inherit;cursor:pointer;text-decoration:none}button:hover,.button:hover{background:#653b46}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a24c67;outline-offset:3px}button[aria-pressed=true]{background:#4b3434}select,input{font:inherit;padding:9px;border:1px solid var(--line);border-radius:9px;max-width:100%}label{display:block;margin:10px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#fdf0ec;padding:16px;border-radius:12px;font-size:14px}table{width:100%;border-collapse:collapse;font-size:15px}td,th{text-align:left;padding:8px;border-bottom:1px solid var(--line)}.muted{font-size:14px;color:#795a5a}.result{min-height:32px;font-weight:600;margin-top:15px}.timeline{border-left:2px solid var(--pink);padding-left:24px}.timeline article{margin:24px 0}.timeline strong{color:var(--dark)}.chips{display:flex;flex-wrap:wrap;gap:8px}.node{border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;background:#fff}.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.node.active{background:var(--soft);border-color:var(--pink)}fieldset{border:0;padding:0;margin:20px 0}legend{font-weight:bold}footer{text-align:center;padding:35px;color:var(--dark);background:var(--soft)}@media(max-width:500px){.panel{padding:16px}.layers{grid-template-columns:1fr}header{padding-top:50px}} </style></head><body>
-<nav><a href="index.html">← Human Artifact</a><strong>HUMANS × TECHNOLOGY ♡</strong><a href="#quiz">Test your knowledge</a></nav><main><header><div class="eyebrow">An interactive human artifact</div><h1>Behind the Chatbox</h1><p class="lead">What are we actually using? A beginner-friendly journey into the technology behind everyday AI.</p><a class="button" href="#intro">Let's explore ↓</a></header>
-<section id="intro"><div class="eyebrow">01 / The human story</div><h2>It started with a phone call.</h2><p>As an Electrical Engineering student with a minor in Artificial Intelligence, I use AI frequently. Yet I realized I could not clearly explain the difference between APIs, machine learning, deep learning and LLMs. My dad, an electronics engineer, helped me understand some of these ideas through familiar examples from Colombia. This project is my attempt to share that experience with someone who has never studied AI.</p><div class="panel soft"><h3>How can we make thoughtful decisions about AI if we don't understand the basics of how it works?</h3><p>You do not need to know how to code to explore this website.</p></div></section>
-<section><div class="eyebrow">02 / A little history</div><h2>AI did not appear overnight.</h2><div class="timeline"><article><strong>1950s</strong><h3>Can machines think?</h3><p>Alan Turing proposed a way to discuss machine intelligence in 1950. The Dartmouth research project in 1956 helped establish AI as a field.</p></article><article><strong>1950s–1990s</strong><h3>Learning from examples</h3><p>Early neural networks and other machine learning methods developed alongside approaches based on explicit rules.</p></article><article><strong>2010s</strong><h3>Deep learning advances</h3><p>More computing power, data and improved methods helped neural networks achieve major advances in vision, speech and language.</p></article><article><strong>2017</strong><h3>The Transformer</h3><p>A new architecture based on attention helped models process relationships between tokens efficiently.</p></article><article><strong>2022–2023</strong><h3>AI becomes conversational</h3><p>ChatGPT launched in 2022; Claude and Gemini followed in 2023, bringing powerful models to more people through accessible interfaces.</p></article></div><p class="muted">APIs developed alongside software systems; they are not a stage in the evolution of AI.</p></section>
-<section><div class="eyebrow">03 / APIs</div><h2>How do systems talk to each other?</h2><p>An application programming interface (API) defines how software can request information or actions from another system. Imagine a delivery company like Rappi sharing selected order statistics with an authorized business. In Colombia, a similar idea can help explain authorized access to vehicle records in systems such as RUNT.</p><div class="panel"><h3>Try a simulated delivery API</h3><label>Product <select id="product"><option>Burgers</option><option>Pizza</option><option>Coffee</option></select></label><label>Access <select id="access"><option value="yes">Authorized</option><option value="no">Not authorized</option></select></label><button id="request">Send request</button><pre id="api" aria-live="polite">Your response will appear here.</pre><p class="muted">Fictional data and a local simulation. No real Rappi or RUNT systems are contacted.</p></div></section>
-<section><div class="eyebrow">04 / Machine learning</div><h2>Learning from data</h2><p>Machine learning uses examples to learn patterns rather than requiring a programmer to specify every rule. A spreadsheet is a useful starting point, although machine learning can also work with other kinds of data.</p><div class="panel"><h3>Predict delivery demand</h3><table><thead><tr><th>Rain</th><th>Time</th><th>Orders</th></tr></thead><tbody><tr><td>No</td><td>Lunch</td><td>100</td></tr><tr><td>No</td><td>Lunch</td><td>120</td></tr><tr><td>Yes</td><td>Lunch</td><td>160</td></tr><tr><td>Yes</td><td>Lunch</td><td>180</td></tr><tr><td>No</td><td>Dinner</td><td>200</td></tr><tr><td>No</td><td>Dinner</td><td>220</td></tr><tr><td>Yes</td><td>Dinner</td><td>280</td></tr><tr><td>Yes</td><td>Dinner</td><td>320</td></tr></tbody></table><label>Weather <select id="rain"><option>No</option><option>Yes</option></select></label><label>Time <select id="meal"><option>Lunch</option><option>Dinner</option></select></label><button id="predict">Predict orders</button><div id="prediction" class="result" aria-live="polite"></div><p class="muted">This toy model estimates the mean of matching training examples. Real models may learn much more complex relationships and must be evaluated on unseen data.</p></div></section>
-<section><div class="eyebrow">05 / Deep learning</div><h2>Patterns within patterns</h2><p>Deep learning is a type of machine learning using neural networks with multiple layers. It is especially useful for complex data such as images, sound and language. Both traditional machine learning and deep learning can use different kinds of data.</p><div class="panel"><h3>How might a vision model recognize an image?</h3><label>Example <select id="animal"><option>Cat</option><option>Dog</option></select></label><div class="layers"><div class="node" id="layer0">Input<br><span id="animalIcon">🐱</span></div><div class="node" id="layer1">Hidden layers<br>Edges, shapes, patterns</div><div class="node" id="layer2">Output<br><span id="classification">?</span></div></div><p><button id="step">Explore next stage</button> <button id="reset">Reset</button></p><div id="layerText" aria-live="polite" class="result">Start with an image.</div><p class="muted">Conceptual illustration, not an actual trained image classifier. Real learned features are not always human-interpretable.</p></div></section>
-<section><div class="eyebrow">06 / Large language models</div><h2>One token at a time</h2><p>Large language models (LLMs) are deep learning models trained on large collections of data to learn patterns in language. Many generate text by predicting a next token, which can be a word or part of a word, and repeating the process. Modern assistants can also use other modalities and tools.</p><div class="panel"><h3>Try next-token prediction</h3><label>Context <select id="context"><option value="0">I drink coffee in the</option><option value="1">The cat sat on the</option><option value="2">To solve the equation, first</option></select></label><p id="sentence"></p><div id="tokens" class="chips"></div><div id="tokenResult" class="result" aria-live="polite"></div><p class="muted">Illustrative choices and invented probabilities, not outputs from a real LLM. Plausible language does not guarantee factual accuracy.</p></div></section>
-<section><div class="eyebrow">07 / Putting it together</div><h2>What happens behind the chatbox?</h2><div class="grid"><div class="panel"><h3>1. Your request</h3><p>You enter a message in an application.</p></div><div class="panel"><h3>2. The service</h3><p>Software sends the request to a model service, often through an API or internal interface.</p></div><div class="panel"><h3>3. The model</h3><p>A trained neural network processes the input and generates output, often token by token.</p></div><div class="panel"><h3>4. Your response</h3><p>The application displays the result. You decide whether to trust, verify or use it.</p></div></div><p>ChatGPT, Gemini and Claude are assistant products associated with families of AI models. They may also use search, tools, safety systems and other components. An API is an interface, not a model.</p><div class="panel soft"><strong>AI → Machine learning → Deep learning → Many modern LLMs</strong><p>These are nested categories. APIs sit alongside them as a way for software to communicate.</p></div></section>
-<section id="quiz"><div class="eyebrow">08 / Your turn</div><h2>What did you discover?</h2><div class="panel"><form id="quizForm"><div id="questions"></div><button type="submit">Check my answers</button></form><div id="score" class="result" aria-live="polite"></div></div></section>
-<section><div class="eyebrow">09 / A human question</div><h2>Using AI is not the same as understanding it.</h2><p>Throughout our course, we explored how technologies spread and how their creators can lose control over their uses. Mustafa Suleyman calls attention to this containment problem. As AI becomes part of education, work and everyday decisions, understanding its foundations may help us ask better questions about accuracy, privacy, dependence and responsibility. But literacy alone cannot solve every problem: institutions and developers also have responsibilities.</p><p>My hope is that this experience makes AI feel less mysterious without making it seem less powerful. We do not all need to become AI engineers, but we should be able to question the tools we rely on.</p><div class="panel soft"><h3>If AI becomes part of almost everything we do, should understanding it become part of everyone's education?</h3></div></section>
-<section><div class="eyebrow">10 / Sources & credits</div><h2>Keep exploring</h2><p>Suggested background reading:</p><ul><li><a href="https://doi.org/10.1093/mind/LIX.236.433">Alan Turing, Computing Machinery and Intelligence (1950)</a></li><li><a href="https://doi.org/10.1038/nature14539">LeCun, Bengio and Hinton, Deep Learning (2015)</a></li><li><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., Attention Is All You Need (2017)</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Glossary/API">MDN: API glossary</a></li><li>Mustafa Suleyman, The Coming Wave — The Containment Problem (course reading).</li></ul><p>Personal inspiration: a conversation with my dad. The educational simulations, initial explanations, layout and HTML/CSS/JavaScript prototype were developed with assistance from ChatGPT. All simulations use fictional or illustrative data.</p></section></main><footer>Behind the Chatbox ♡ · Human Artifact · Laura Guevara</footer>
-<script>
-const $=id=>document.getElementById(id);$('request').onclick=()=>{$('api').textContent=$('access').value==='no'?'403 Forbidden — permission required':JSON.stringify({status:200,product:$('product').value,month:'September',orders:{Burgers:240,Pizza:180,Coffee:310}[$('product').value]},null,2)};
-const data=[['No','Lunch',100],['No','Lunch',120],['Yes','Lunch',160],['Yes','Lunch',180],['No','Dinner',200],['No','Dinner',220],['Yes','Dinner',280],['Yes','Dinner',320]];$('predict').onclick=()=>{let rows=data.filter(r=>r[0]===$('rain').value&&r[1]===$('meal').value);$('prediction').textContent='Estimated orders: '+rows.reduce((s,r)=>s+r[2],0)/rows.length+' (average of '+rows.map(r=>r[2]).join(' and ')+')'};
-let stage=-1;function reset(){stage=-1;for(let i=0;i<3;i++)$('layer'+i).classList.remove('active');$('animalIcon').textContent=$('animal').value==='Cat'?'🐱':'🐶';$('classification').textContent='?';$('layerText').textContent='Start with an image.';$('step').disabled=false} $('reset').onclick=reset;$('animal').onchange=reset;$('step').onclick=()=>{stage++;$('layer'+stage).classList.add('active');$('layerText').textContent=['The image is represented as numerical input.','Successive layers transform the input into learned representations.','The output assigns scores to possible classes.'][stage];if(stage===2){$('classification').textContent=$('animal').value+' (illustrative)';$('step').disabled=true}};
-const examples=[['I drink coffee in the',[['morning',70],['afternoon',25],['garage',5]]],['The cat sat on the',[['mat',60],['sofa',35],['moon',5]]],['To solve the equation, first',[['simplify',55],['isolate',40],['dance',5]]]];function tokenDemo(){let [s,choices]=examples[+$('context').value];$('sentence').textContent=s+' ___';$('tokens').replaceChildren();$('tokenResult').textContent='';choices.forEach(([word,p])=>{let b=document.createElement('button');b.textContent=word+' · '+p+'%';b.onclick=()=>{$('sentence').textContent=s+' '+word;$('tokenResult').textContent='Selected token: '+word+'. A real model would then predict another token based on the updated context.'};$('tokens').append(b)})}$('context').onchange=tokenDemo;tokenDemo();
-const qs=[['What does an API do?',['Lets software communicate','Trains every AI model','Stores all internet data'],0,'An API defines how software communicates.'],['Deep learning is…',['Unrelated to machine learning','A type of machine learning','A delivery API'],1,'Deep learning uses multilayer neural networks.'],['Many LLMs generate text by…',['Checking every fact in a database','Reading human thoughts','Predicting successive tokens'],2,'Token prediction can produce plausible but incorrect text.'],['Does fluent AI output guarantee accuracy?',['Yes','No'],1,'Fluency is not a guarantee of truth.']];qs.forEach(([q,opts],i)=>{let f=document.createElement('fieldset'),l=document.createElement('legend');l.textContent=q;f.append(l);opts.forEach((o,j)=>{let label=document.createElement('label'),r=document.createElement('input');r.type='radio';r.name='q'+i;r.value=j;r.required=true;label.append(r,' '+o);f.append(label)});$('questions').append(f)});$('quizForm').onsubmit=e=>{e.preventDefault();let fd=new FormData(e.target),n=0;$('score').replaceChildren();qs.forEach((q,i)=>{let ok=+fd.get('q'+i)===q[2];n+=ok;let p=document.createElement('p');p.textContent=(ok?'✓ ':'Review: ')+q[3];$('score').append(p)});let h=document.createElement('h3');h.textContent=n+' / '+qs.length+' correct';$('score').prepend(h)};
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width,initial-scale=1" name="viewport"/>
+    <title>Behind the Chatbox</title>
+    <style>
+      :root {
+        --bg: #fffaf7;
+        --ink: #4b3434;
+        --pink: #c96f86;
+        --soft: #f8dfe4;
+        --line: #efd1d6;
+        --dark: #87515d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 17px/1.7 system-ui,sans-serif;
+      }
+
+      nav {
+        background: var(--soft);
+        padding: 16px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid var(--line);
+      }
+
+      a {
+        color: var(--dark);
+      }
+
+      nav a {
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      main {
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 24px;
+      }
+
+      header {
+        padding: 85px 0 50px;
+        text-align: center;
+      }
+
+      h1,h2,h3 {
+        font-family: Georgia,serif;
+        line-height: 1.15;
+      }
+
+      h1 {
+        font-size: clamp(44px,8vw,85px);
+        margin: 15px 0;
+      }
+
+      h2 {
+        font-size: clamp(30px,5vw,44px);
+        margin: 10px 0 20px;
+      }
+
+      h3 {
+        font-size: 23px;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--dark);
+        font-weight: bold;
+      }
+
+      .lead {
+        font-size: 21px;
+        max-width: 680px;
+        margin: 20px auto;
+      }
+
+      section {
+        padding: 50px 0;
+        border-top: 1px solid var(--line);
+        scroll-margin-top: 20px;
+      }
+
+      .panel {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 25px;
+        margin: 20px 0;
+      }
+
+      .soft {
+        background: #fdf0ec;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+        gap: 16px;
+      }
+
+      button,.button {
+        display: inline-block;
+        background: var(--dark);
+        color: white;
+        border: 0;
+        border-radius: 24px;
+        padding: 12px 20px;
+        font: inherit;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      button:hover,.button:hover {
+        background: #653b46;
+      }
+
+      button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {
+        outline: 3px solid #a24c67;
+        outline-offset: 3px;
+      }
+
+      button[aria-pressed=true] {
+        background: #4b3434;
+      }
+
+      select,input {
+        font: inherit;
+        padding: 9px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        max-width: 100%;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        background: #fdf0ec;
+        padding: 16px;
+        border-radius: 12px;
+        font-size: 14px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+
+      td,th {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .muted {
+        font-size: 14px;
+        color: #795a5a;
+      }
+
+      .result {
+        min-height: 32px;
+        font-weight: 600;
+        margin-top: 15px;
+      }
+
+      .timeline {
+        border-left: 2px solid var(--pink);
+        padding-left: 24px;
+      }
+
+      .timeline article {
+        margin: 24px 0;
+      }
+
+      .timeline strong {
+        color: var(--dark);
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .node {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px;
+        text-align: center;
+        background: #fff;
+      }
+
+      .layers {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 8px;
+      }
+
+      .node.active {
+        background: var(--soft);
+        border-color: var(--pink);
+      }
+
+      fieldset {
+        border: 0;
+        padding: 0;
+        margin: 20px 0;
+      }
+
+      legend {
+        font-weight: bold;
+      }
+
+      footer {
+        text-align: center;
+        padding: 35px;
+        color: var(--dark);
+        background: var(--soft);
+      }
+
+      @media (max-width:500px) {
+        .panel {
+          padding: 16px;
+        }
+        .layers {
+          grid-template-columns: 1fr;
+        }
+        header {
+          padding-top: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">← Human Artifact</a>
+      <strong>HUMANS × TECHNOLOGY ♡</strong>
+      <a href="#quiz">Test your knowledge</a>
+    </nav>
+    <main>
+      <header>
+        <div class="eyebrow">An interactive human artifact</div>
+        <h1>Behind the Chatbox</h1>
+        <p class="lead">What are we actually using? A beginner-friendly journey into the technology behind everyday AI.</p>
+        <a class="button" href="#intro">Let's explore ↓</a>
+      </header>
+      <!-- 01 / The human story -->
+      <section id="intro">
+        <div class="eyebrow">01 / The human story</div>
+        <h2>It started with a phone call.</h2>
+        <p>As an Electrical Engineering student with a minor in Artificial Intelligence, I use AI frequently. Yet I realized I could not clearly explain the difference between APIs, machine learning, deep learning and LLMs. My dad, an electronics engineer, helped me understand some of these ideas through familiar examples from Colombia. This project is my attempt to share that experience with someone who has never studied AI.</p>
+        <div class="panel soft">
+          <h3>How can we make thoughtful decisions about AI if we don't understand the basics of how it works?</h3>
+          <p>You do not need to know how to code to explore this website.</p>
+        </div>
+      </section>
+      <!-- 02 / A little history -->
+      <section>
+        <div class="eyebrow">02 / A little history</div>
+        <h2>AI did not appear overnight.</h2>
+        <div class="timeline">
+          <article>
+            <strong>1950s</strong>
+            <h3>Can machines think?</h3>
+            <p>Alan Turing proposed a way to discuss machine intelligence in 1950. The Dartmouth research project in 1956 helped establish AI as a field.</p>
+          </article>
+          <article>
+            <strong>1950s–1990s</strong>
+            <h3>Learning from examples</h3>
+            <p>Early neural networks and other machine learning methods developed alongside approaches based on explicit rules.</p>
+          </article>
+          <article>
+            <strong>2010s</strong>
+            <h3>Deep learning advances</h3>
+            <p>More computing power, data and improved methods helped neural networks achieve major advances in vision, speech and language.</p>
+          </article>
+          <article>
+            <strong>2017</strong>
+            <h3>The Transformer</h3>
+            <p>A new architecture based on attention helped models process relationships between tokens efficiently.</p>
+          </article>
+          <article>
+            <strong>2022–2023</strong>
+            <h3>AI becomes conversational</h3>
+            <p>ChatGPT launched in 2022; Claude and Gemini followed in 2023, bringing powerful models to more people through accessible interfaces.</p>
+          </article>
+        </div>
+        <p class="muted">APIs developed alongside software systems; they are not a stage in the evolution of AI.</p>
+      </section>
+      <!-- 03 / APIs -->
+      <section>
+        <div class="eyebrow">03 / APIs</div>
+        <h2>How do systems talk to each other?</h2>
+        <p>An application programming interface (API) defines how software can request information or actions from another system. Imagine a delivery company like Rappi sharing selected order statistics with an authorized business. In Colombia, a similar idea can help explain authorized access to vehicle records in systems such as RUNT.</p>
+        <div class="panel">
+          <h3>Try a simulated delivery API</h3>
+          <label>Product <select id="product"><option>Burgers</option><option>Pizza</option><option>Coffee</option></select></label>
+          <label>Access <select id="access"><option value="yes">Authorized</option><option value="no">Not authorized</option></select></label>
+          <button id="request">Send request</button>
+          <pre aria-live="polite" id="api">Your response will appear here.</pre>
+          <p class="muted">Fictional data and a local simulation. No real Rappi or RUNT systems are contacted.</p>
+        </div>
+      </section>
+      <!-- 04 / Machine learning -->
+      <section>
+        <div class="eyebrow">04 / Machine learning</div>
+        <h2>Learning from data</h2>
+        <p>Machine learning uses examples to learn patterns rather than requiring a programmer to specify every rule. A spreadsheet is a useful starting point, although machine learning can also work with other kinds of data.</p>
+        <div class="panel">
+          <h3>Predict delivery demand</h3>
+          <table>
+            <thead>
+              <tr><th>Rain</th><th>Time</th><th>Orders</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>No</td><td>Lunch</td><td>100</td></tr>
+              <tr><td>No</td><td>Lunch</td><td>120</td></tr>
+              <tr><td>Yes</td><td>Lunch</td><td>160</td></tr>
+              <tr><td>Yes</td><td>Lunch</td><td>180</td></tr>
+              <tr><td>No</td><td>Dinner</td><td>200</td></tr>
+              <tr><td>No</td><td>Dinner</td><td>220</td></tr>
+              <tr><td>Yes</td><td>Dinner</td><td>280</td></tr>
+              <tr><td>Yes</td><td>Dinner</td><td>320</td></tr>
+            </tbody>
+          </table>
+          <label>Weather <select id="rain"><option>No</option><option>Yes</option></select></label>
+          <label>Time <select id="meal"><option>Lunch</option><option>Dinner</option></select></label>
+          <button id="predict">Predict orders</button>
+          <div aria-live="polite" class="result" id="prediction"></div>
+          <p class="muted">This toy model estimates the mean of matching training examples. Real models may learn much more complex relationships and must be evaluated on unseen data.</p>
+        </div>
+      </section>
+      <!-- 05 / Deep learning -->
+      <section>
+        <div class="eyebrow">05 / Deep learning</div>
+        <h2>Patterns within patterns</h2>
+        <p>Deep learning is a type of machine learning using neural networks with multiple layers. It is especially useful for complex data such as images, sound and language. Both traditional machine learning and deep learning can use different kinds of data.</p>
+        <div class="panel">
+          <h3>How might a vision model recognize an image?</h3>
+          <label>Example <select id="animal"><option>Cat</option><option>Dog</option></select></label>
+          <div class="layers">
+            <div class="node" id="layer0">Input<br/><span id="animalIcon">🐱</span></div>
+            <div class="node" id="layer1">Hidden layers<br/>Edges, shapes, patterns</div>
+            <div class="node" id="layer2">Output<br/><span id="classification">?</span></div>
+          </div>
+          <p><button id="step">Explore next stage</button> <button id="reset">Reset</button></p>
+          <div aria-live="polite" class="result" id="layerText">Start with an image.</div>
+          <p class="muted">Conceptual illustration, not an actual trained image classifier. Real learned features are not always human-interpretable.</p>
+        </div>
+      </section>
+      <!-- 06 / Large language models -->
+      <section>
+        <div class="eyebrow">06 / Large language models</div>
+        <h2>One token at a time</h2>
+        <p>Large language models (LLMs) are deep learning models trained on large collections of data to learn patterns in language. Many generate text by predicting a next token, which can be a word or part of a word, and repeating the process. Modern assistants can also use other modalities and tools.</p>
+        <div class="panel">
+          <h3>Try next-token prediction</h3>
+          <label>Context <select id="context"><option value="0">I drink coffee in the</option><option value="1">The cat sat on the</option><option value="2">To solve the equation, first</option></select></label>
+          <p id="sentence"></p>
+          <div class="chips" id="tokens"></div>
+          <div aria-live="polite" class="result" id="tokenResult"></div>
+          <p class="muted">Illustrative choices and invented probabilities, not outputs from a real LLM. Plausible language does not guarantee factual accuracy.</p>
+        </div>
+      </section>
+      <!-- 07 / Putting it together -->
+      <section>
+        <div class="eyebrow">07 / Putting it together</div>
+        <h2>What happens behind the chatbox?</h2>
+        <div class="grid">
+          <div class="panel">
+            <h3>1. Your request</h3>
+            <p>You enter a message in an application.</p>
+          </div>
+          <div class="panel">
+            <h3>2. The service</h3>
+            <p>Software sends the request to a model service, often through an API or internal interface.</p>
+          </div>
+          <div class="panel">
+            <h3>3. The model</h3>
+            <p>A trained neural network processes the input and generates output, often token by token.</p>
+          </div>
+          <div class="panel">
+            <h3>4. Your response</h3>
+            <p>The application displays the result. You decide whether to trust, verify or use it.</p>
+          </div>
+        </div>
+        <p>ChatGPT, Gemini and Claude are assistant products associated with families of AI models. They may also use search, tools, safety systems and other components. An API is an interface, not a model.</p>
+        <div class="panel soft">
+          <strong>AI → Machine learning → Deep learning → Many modern LLMs</strong>
+          <p>These are nested categories. APIs sit alongside them as a way for software to communicate.</p>
+        </div>
+      </section>
+      <!-- 08 / Your turn -->
+      <section id="quiz">
+        <div class="eyebrow">08 / Your turn</div>
+        <h2>What did you discover?</h2>
+        <div class="panel">
+          <form id="quizForm">
+            <div id="questions"></div>
+            <button type="submit">Check my answers</button>
+          </form>
+          <div aria-live="polite" class="result" id="score"></div>
+        </div>
+      </section>
+      <!-- 09 / A human question -->
+      <section>
+        <div class="eyebrow">09 / A human question</div>
+        <h2>Using AI is not the same as understanding it.</h2>
+        <p>Throughout our course, we explored how technologies spread and how their creators can lose control over their uses. Mustafa Suleyman calls attention to this containment problem. As AI becomes part of education, work and everyday decisions, understanding its foundations may help us ask better questions about accuracy, privacy, dependence and responsibility. But literacy alone cannot solve every problem: institutions and developers also have responsibilities.</p>
+        <p>My hope is that this experience makes AI feel less mysterious without making it seem less powerful. We do not all need to become AI engineers, but we should be able to question the tools we rely on.</p>
+        <div class="panel soft">
+          <h3>If AI becomes part of almost everything we do, should understanding it become part of everyone's education?</h3>
+        </div>
+      </section>
+      <!-- 10 / Sources & credits -->
+      <section>
+        <div class="eyebrow">10 / Sources &amp; credits</div>
+        <h2>Keep exploring</h2>
+        <p>Suggested background reading:</p>
+        <ul>
+          <li><a href="https://doi.org/10.1093/mind/LIX.236.433">Alan Turing, Computing Machinery and Intelligence (1950)</a></li>
+          <li><a href="https://doi.org/10.1038/nature14539">LeCun, Bengio and Hinton, Deep Learning (2015)</a></li>
+          <li><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., Attention Is All You Need (2017)</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/API">MDN: API glossary</a></li>
+          <li>Mustafa Suleyman, The Coming Wave — The Containment Problem (course reading).</li>
+        </ul>
+        <p>Personal inspiration: This project was inspired by a conversation with my dad, who helped me understand complex technological concepts through everyday examples. My goal is to recreate that learning experience for others. AI assisted with the explanations, design, coding and educational simulations. All simulations use fictional or illustrative data.</p>
+      </section>
+    </main>
+    <footer>Behind the Chatbox ♡ · Human Artifact · Laura Guevara</footer>
+    <script>
+      // DOM helper
+      const $ = id => document.getElementById(id);
+      // 03 — API simulation
+      $('request').onclick = () => { $('api').textContent = $('access').value === 'no' ? '403 Forbidden — permission required' : JSON.stringify({ status: 200, product: $('product').value, month: 'September', orders: { Burgers: 240, Pizza: 180, Coffee: 310 }[$('product').value] }, null, 2); };
+      // 04 — Machine learning simulation
+      const data = [['No', 'Lunch', 100], ['No', 'Lunch', 120], ['Yes', 'Lunch', 160], ['Yes', 'Lunch', 180], ['No', 'Dinner', 200], ['No', 'Dinner', 220], ['Yes', 'Dinner', 280], ['Yes', 'Dinner', 320]];
+      $('predict').onclick = () => { let rows = data.filter(r => r[0] === $('rain').value && r[1] === $('meal').value); $('prediction').textContent = 'Estimated orders: ' + rows.reduce((s, r) => s + r[2], 0) / rows.length + ' (average of ' + rows.map(r => r[2]).join(' and ') + ')'; };
+      // 05 — Neural network illustration
+      let stage = -1;
+      function reset() { stage = -1; for (let i = 0; i < 3; i++)
+          $('layer' + i).classList.remove('active'); $('animalIcon').textContent = $('animal').value === 'Cat' ? '🐱' : '🐶'; $('classification').textContent = '?'; $('layerText').textContent = 'Start with an image.'; $('step').disabled = false; }
+      $('reset').onclick = reset;
+      $('animal').onchange = reset;
+      $('step').onclick = () => { stage++; $('layer' + stage).classList.add('active'); $('layerText').textContent = ['The image is represented as numerical input.', 'Successive layers transform the input into learned representations.', 'The output assigns scores to possible classes.'][stage]; if (stage === 2) {
+          $('classification').textContent = $('animal').value + ' (illustrative)';
+          $('step').disabled = true;
+      } };
+      // 06 — Token prediction illustration
+      const examples = [['I drink coffee in the', [['morning', 70], ['afternoon', 25], ['garage', 5]]], ['The cat sat on the', [['mat', 60], ['sofa', 35], ['moon', 5]]], ['To solve the equation, first', [['simplify', 55], ['isolate', 40], ['dance', 5]]]];
+      function tokenDemo() { let [s, choices] = examples[+$('context').value]; $('sentence').textContent = s + ' ___'; $('tokens').replaceChildren(); $('tokenResult').textContent = ''; choices.forEach(([word, p]) => { let b = document.createElement('button'); b.textContent = word + ' · ' + p + '%'; b.onclick = () => { $('sentence').textContent = s + ' ' + word; $('tokenResult').textContent = 'Selected token: ' + word + '. A real model would then predict another token based on the updated context.'; }; $('tokens').append(b); }); }
+      $('context').onchange = tokenDemo;
+      tokenDemo();
+      // 08 — Knowledge quiz
+      const qs = [['What does an API do?', ['Lets software communicate', 'Trains every AI model', 'Stores all internet data'], 0, 'An API defines how software communicates.'], ['Deep learning is…', ['Unrelated to machine learning', 'A type of machine learning', 'A delivery API'], 1, 'Deep learning uses multilayer neural networks.'], ['Many LLMs generate text by…', ['Checking every fact in a database', 'Reading human thoughts', 'Predicting successive tokens'], 2, 'Token prediction can produce plausible but incorrect text.'], ['Does fluent AI output guarantee accuracy?', ['Yes', 'No'], 1, 'Fluency is not a guarantee of truth.']];
+      qs.forEach(([q, opts], i) => { let f = document.createElement('fieldset'), l = document.createElement('legend'); l.textContent = q; f.append(l); opts.forEach((o, j) => { let label = document.createElement('label'), r = document.createElement('input'); r.type = 'radio'; r.name = 'q' + i; r.value = j; r.required = true; label.append(r, ' ' + o); f.append(label); }); $('questions').append(f); });
+      $('quizForm').onsubmit = e => { e.preventDefault(); let fd = new FormData(e.target), n = 0; $('score').replaceChildren(); qs.forEach((q, i) => { let ok = +fd.get('q' + i) === q[2]; n += ok; let p = document.createElement('p'); p.textContent = (ok ? '✓ ' : 'Review: ') + q[3]; $('score').append(p); }); let h = document.createElement('h3'); h.textContent = n + ' / ' + qs.length + ' correct'; $('score').prepend(h); };
+    </script>
+  </body>
+</html>
